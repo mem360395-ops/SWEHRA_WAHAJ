@@ -1,1 +1,789 @@
-https://claude.ai/share/a299c5d6-b550-44ed-9882-59c7ac96291e
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>وهج الصويحرة - النادي الرياضي</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #0a1628; color: #fff; direction: rtl; min-height: 100vh; }
+:root { --orange: #FF6B1A; --navy: #0a1628; --navy2: #112240; --navy3: #1a3260; --gold: #FFB347; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #112240; }
+::-webkit-scrollbar-thumb { background: #FF6B1A; border-radius: 3px; }
+@keyframes glow { 0%,100%{box-shadow:0 0 10px #FF6B1A,0 0 20px #FF6B1A44} 50%{box-shadow:0 0 20px #FF6B1A,0 0 40px #FF6B1A88} }
+@keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+@keyframes slideIn { from{transform:translateY(-30px);opacity:0} to{transform:translateY(0);opacity:1} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 40%{transform:translateY(-12px)} }
+@keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.navbar { background: linear-gradient(135deg,#0a1628,#1a3260); border-bottom:2px solid #FF6B1A; padding:0 20px; position:sticky; top:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; height:65px; animation:glow 3s ease-in-out infinite; flex-wrap:wrap; }
+.logo-area { display:flex; align-items:center; gap:12px; }
+.logo-flame { font-size:32px; animation:float 2s ease-in-out infinite; }
+.logo-text { font-size:22px; font-weight:900; background:linear-gradient(135deg,#FF6B1A,#FFB347); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.logo-sub { font-size:11px; color:#aaa; }
+.nav-btns { display:flex; gap:6px; flex-wrap:wrap; padding:8px 0; }
+.nav-btn { background:transparent; border:1.5px solid #FF6B1A; color:#fff; padding:6px 12px; border-radius:20px; cursor:pointer; font-size:12px; font-family:inherit; transition:all 0.3s; }
+.nav-btn:hover, .nav-btn.active { background:#FF6B1A; transform:translateY(-2px); }
+.page { display:none; animation:slideIn 0.4s ease; }
+.page.active { display:block; }
+.ticker-bar { background:#FF6B1A; padding:8px 0; overflow:hidden; font-size:13px; font-weight:600; }
+.ticker-inner { display:flex; gap:40px; animation:ticker 20s linear infinite; white-space:nowrap; }
+.hero { background:linear-gradient(135deg,#0a1628,#1a3260,#1a1a3e); padding:40px 20px 30px; text-align:center; position:relative; overflow:hidden; }
+.hero-title { font-size:42px; font-weight:900; background:linear-gradient(135deg,#FF6B1A,#FFB347,#fff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px; }
+.hero-subtitle { font-size:16px; color:#aaa; margin-bottom:20px; }
+.hero-clock { background:rgba(255,107,26,0.1); border:1px solid rgba(255,107,26,0.3); border-radius:12px; display:inline-block; padding:12px 24px; font-size:20px; font-weight:700; color:#FFB347; animation:glow 3s ease-in-out infinite; }
+.welcome-banner { background:linear-gradient(135deg,rgba(255,107,26,0.15),rgba(255,179,71,0.1)); border:1px solid rgba(255,107,26,0.4); border-radius:12px; padding:14px 20px; margin:16px; text-align:center; font-size:15px; animation:pulse 3s ease-in-out infinite; }
+.section { padding:16px; }
+.section-title { font-size:18px; font-weight:700; color:#FF6B1A; margin-bottom:14px; border-right:3px solid #FF6B1A; padding-right:10px; }
+.cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; }
+.sport-card { background:linear-gradient(135deg,#112240,#1a3260); border:1.5px solid rgba(255,107,26,0.3); border-radius:14px; padding:20px 10px; text-align:center; cursor:pointer; transition:all 0.3s; position:relative; overflow:hidden; }
+.sport-card::after { content:''; position:absolute; bottom:0; left:0; width:100%; height:3px; background:linear-gradient(90deg,#FF6B1A,#FFB347); transform:scaleX(0); transition:transform 0.3s; transform-origin:right; }
+.sport-card:hover::after { transform:scaleX(1); }
+.sport-card:hover { transform:translateY(-5px); border-color:#FF6B1A; box-shadow:0 8px 25px rgba(255,107,26,0.3); }
+.sport-icon { font-size:36px; display:block; margin-bottom:8px; animation:float 2s ease-in-out infinite; }
+.sport-name { font-size:14px; font-weight:700; color:#fff; margin-bottom:4px; }
+.sport-count { font-size:11px; color:#FFB347; }
+.modal-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:2000; display:flex; align-items:center; justify-content:center; animation:fadeIn 0.3s ease; }
+.modal-box { background:linear-gradient(135deg,#112240,#1a3260); border:2px solid #FF6B1A; border-radius:16px; width:90%; max-width:500px; max-height:80vh; overflow-y:auto; padding:24px; animation:slideIn 0.3s ease; box-shadow:0 0 40px rgba(255,107,26,0.4); }
+.modal-title { font-size:20px; font-weight:800; color:#FF6B1A; margin-bottom:16px; text-align:center; }
+.modal-close { float:left; background:rgba(255,107,26,0.2); border:1px solid #FF6B1A; color:#fff; width:30px; height:30px; border-radius:50%; cursor:pointer; font-size:16px; }
+.student-item { display:flex; align-items:center; gap:10px; padding:10px; background:rgba(255,107,26,0.05); border-radius:8px; margin-bottom:8px; border:1px solid rgba(255,107,26,0.15); transition:all 0.2s; }
+.student-item:hover { background:rgba(255,107,26,0.15); transform:translateX(-3px); }
+.student-avatar { width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,#FF6B1A,#FFB347); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0; }
+.lb-item { display:flex; align-items:center; gap:10px; padding:12px; background:rgba(255,107,26,0.05); border-radius:10px; margin-bottom:8px; border:1px solid rgba(255,107,26,0.15); transition:all 0.3s; }
+.lb-item:hover { transform:translateX(-4px); background:rgba(255,107,26,0.12); }
+.lb-rank { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0; }
+.rank-1 { background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; animation:glow 2s infinite; }
+.rank-2 { background:linear-gradient(135deg,#C0C0C0,#A0A0A0); color:#000; }
+.rank-3 { background:linear-gradient(135deg,#CD7F32,#A0522D); color:#fff; }
+.rank-n { background:rgba(255,107,26,0.2); color:#FF6B1A; }
+.lb-pts-bar { height:6px; background:rgba(255,107,26,0.2); border-radius:3px; margin-top:4px; }
+.lb-pts-fill { height:100%; background:linear-gradient(90deg,#FF6B1A,#FFB347); border-radius:3px; transition:width 1s ease; }
+.add-pts-btn { background:rgba(255,107,26,0.2); border:1px solid #FF6B1A; color:#fff; padding:3px 8px; border-radius:6px; cursor:pointer; font-size:12px; }
+.add-pts-btn:hover { background:#FF6B1A; }
+.game-card { background:linear-gradient(135deg,#112240,#1a3260); border:1.5px solid rgba(255,107,26,0.3); border-radius:14px; padding:18px; cursor:pointer; transition:all 0.3s; text-align:center; }
+.game-card:hover { transform:translateY(-4px); border-color:#FF6B1A; box-shadow:0 8px 20px rgba(255,107,26,0.3); }
+.game-icon { font-size:40px; display:block; margin-bottom:8px; }
+.game-name { font-size:15px; font-weight:700; color:#fff; }
+.game-desc { font-size:12px; color:#aaa; margin-top:4px; }
+.quiz-sport-btn { background:linear-gradient(135deg,#112240,#1a3260); border:1.5px solid rgba(255,107,26,0.4); color:#fff; padding:16px; border-radius:12px; cursor:pointer; font-size:16px; font-family:inherit; transition:all 0.3s; text-align:center; display:block; width:100%; margin-bottom:10px; }
+.quiz-sport-btn:hover { background:rgba(255,107,26,0.2); transform:translateX(-4px); }
+.quiz-opt { width:100%; text-align:right; padding:12px 16px; background:rgba(255,107,26,0.05); border:1.5px solid rgba(255,107,26,0.2); color:#fff; border-radius:10px; cursor:pointer; font-size:14px; font-family:inherit; margin-bottom:8px; transition:all 0.3s; }
+.quiz-opt:hover { background:rgba(255,107,26,0.2); border-color:#FF6B1A; }
+.quiz-opt.correct { background:rgba(0,200,100,0.2); border-color:#00c864; }
+.quiz-opt.wrong { background:rgba(255,50,50,0.2); border-color:#ff3232; }
+.quiz-progress { background:rgba(255,255,255,0.1); border-radius:4px; height:8px; margin:12px 0; }
+.quiz-prog-fill { height:100%; background:linear-gradient(90deg,#FF6B1A,#FFB347); border-radius:4px; transition:width 0.4s; }
+.link-card { background:linear-gradient(135deg,#112240,#1a3260); border:1.5px solid rgba(255,107,26,0.3); border-radius:14px; padding:16px 12px; cursor:pointer; transition:all 0.3s; text-align:center; text-decoration:none; display:block; }
+.link-card:hover { transform:translateY(-4px); border-color:#FF6B1A; box-shadow:0 8px 20px rgba(255,107,26,0.3); }
+.link-icon { font-size:32px; display:block; margin-bottom:8px; animation:float 2s ease-in-out infinite; }
+.link-name { font-size:13px; font-weight:700; color:#FF6B1A; }
+.link-desc { font-size:11px; color:#aaa; margin-top:4px; }
+.contact-card { background:rgba(255,107,26,0.05); border:1px solid rgba(255,107,26,0.3); border-radius:12px; padding:16px; margin-bottom:12px; }
+.contact-btn { display:inline-flex; align-items:center; gap:6px; background:#FF6B1A; color:#fff; padding:8px 20px; border-radius:20px; font-size:14px; font-weight:700; margin-top:8px; cursor:pointer; border:none; font-family:inherit; transition:all 0.3s; text-decoration:none; }
+.contact-btn:hover { transform:scale(1.05); }
+.login-box { background:linear-gradient(135deg,#112240,#1a3260); border:2px solid #FF6B1A; border-radius:20px; padding:32px; max-width:360px; margin:40px auto; text-align:center; box-shadow:0 0 40px rgba(255,107,26,0.3); animation:slideIn 0.5s ease; }
+.login-input { width:100%; padding:12px 16px; background:rgba(255,107,26,0.05); border:1.5px solid rgba(255,107,26,0.3); color:#fff; border-radius:10px; font-size:18px; text-align:center; font-family:inherit; letter-spacing:4px; margin:16px 0; }
+.login-input:focus { outline:none; border-color:#FF6B1A; }
+.login-btn { background:linear-gradient(135deg,#FF6B1A,#e55a0f); color:#fff; border:none; padding:12px 40px; border-radius:25px; font-size:16px; font-weight:700; cursor:pointer; font-family:inherit; transition:all 0.3s; animation:glow 2s ease-in-out infinite; }
+.login-btn:hover { transform:scale(1.05); }
+.welcome-screen { text-align:center; padding:40px 20px; animation:slideIn 0.5s ease; }
+.welcome-avatar { width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg,#FF6B1A,#FFB347); margin:0 auto 16px; display:flex; align-items:center; justify-content:center; font-size:32px; animation:bounce 2s ease-in-out infinite; box-shadow:0 0 30px rgba(255,107,26,0.5); }
+.challenge-box { background:linear-gradient(135deg,rgba(255,107,26,0.1),rgba(255,179,71,0.05)); border:2px solid rgba(255,107,26,0.5); border-radius:16px; padding:24px; margin-bottom:16px; animation:glow 3s ease-in-out infinite; }
+.challenge-badge { background:#FF6B1A; color:#fff; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700; display:inline-block; margin-bottom:12px; }
+.done-btn { background:linear-gradient(135deg,#FF6B1A,#FFB347); border:none; color:#fff; padding:10px 24px; border-radius:20px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit; margin-top:12px; transition:all 0.3s; }
+.done-btn:hover { transform:scale(1.05); }
+.done-btn:disabled { opacity:0.5; cursor:not-allowed; }
+.honor-card { background:linear-gradient(135deg,rgba(255,215,0,0.1),rgba(255,107,26,0.05)); border:2px solid rgba(255,215,0,0.4); border-radius:16px; padding:20px; text-align:center; margin-bottom:16px; animation:glow 2s ease-in-out infinite; }
+.game-area { background:#112240; border:1.5px solid rgba(255,107,26,0.3); border-radius:14px; padding:20px; margin-top:12px; }
+.game-btn { background:linear-gradient(135deg,#FF6B1A,#e55a0f); border:none; color:#fff; padding:10px 24px; border-radius:20px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit; margin:4px; transition:all 0.3s; }
+.game-btn:hover { transform:scale(1.05); }
+.game-stat { font-size:24px; font-weight:800; color:#FF6B1A; text-align:center; margin:12px 0; }
+.memory-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; max-width:320px; margin:16px auto; }
+.mem-card { height:60px; background:linear-gradient(135deg,#1a3260,#112240); border:1.5px solid rgba(255,107,26,0.3); border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:24px; transition:all 0.3s; }
+.mem-card.flipped { background:rgba(255,107,26,0.2); border-color:#FF6B1A; }
+.mem-card.matched { background:rgba(0,200,100,0.2); border-color:#00c864; }
+.hangman-display { font-size:20px; color:#FFB347; text-align:center; margin:12px 0; letter-spacing:8px; }
+.kb-row { display:flex; justify-content:center; gap:4px; margin-bottom:4px; flex-wrap:wrap; }
+.kb-key { background:rgba(255,107,26,0.15); border:1px solid rgba(255,107,26,0.3); color:#fff; width:34px; height:34px; border-radius:6px; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
+.kb-key:hover { background:#FF6B1A; }
+.back-btn { background:rgba(255,107,26,0.2); border:1px solid #FF6B1A; color:#fff; padding:6px 16px; border-radius:20px; cursor:pointer; font-size:13px; font-family:inherit; margin-bottom:16px; }
+.back-btn:hover { background:#FF6B1A; }
+@media(max-width:600px) { .navbar{flex-direction:column;height:auto;padding:10px;gap:8px;} .hero-title{font-size:28px;} .nav-btns{justify-content:center;} }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo-area">
+    <span class="logo-flame">🔥</span>
+    <div>
+      <div class="logo-text">وهج الصويحرة</div>
+      <div class="logo-sub">نادي رياضي متكامل</div>
+    </div>
+  </div>
+  <div class="nav-btns">
+    <button class="nav-btn active" onclick="showPage('home')">🏠 الرئيسية</button>
+    <button class="nav-btn" onclick="showPage('sports')">⚽ الرياضات</button>
+    <button class="nav-btn" onclick="showPage('leaderboard')">🏆 المتصدرون</button>
+    <button class="nav-btn" onclick="showPage('games')">🎮 الألعاب</button>
+    <button class="nav-btn" onclick="showPage('quiz')">🧠 المسابقات</button>
+    <button class="nav-btn" onclick="showPage('challenges')">⚡ التحديات</button>
+    <button class="nav-btn" onclick="showPage('links')">🔗 روابط</button>
+    <button class="nav-btn" onclick="showPage('contact')">📞 تواصل</button>
+    <button class="nav-btn" onclick="showPage('login')">🔑 دخول</button>
+  </div>
+</nav>
+
+<div class="ticker-bar">
+  <div class="ticker-inner">
+    <span>🔥 مرحباً بكم في نادي وهج الصويحرة الرياضي &nbsp;|&nbsp; ⚽ كرة القدم &nbsp;|&nbsp; 🏀 كرة السلة &nbsp;|&nbsp; 🤸 جمباز &nbsp;|&nbsp; ♟️ شطرنج &nbsp;|&nbsp; 🤾 كرة اليد &nbsp;|&nbsp; 🎙️ تعليق رياضي &nbsp;|&nbsp;</span>
+    <span>🔥 مرحباً بكم في نادي وهج الصويحرة الرياضي &nbsp;|&nbsp; ⚽ كرة القدم &nbsp;|&nbsp; 🏀 كرة السلة &nbsp;|&nbsp; 🤸 جمباز &nbsp;|&nbsp; ♟️ شطرنج &nbsp;|&nbsp; 🤾 كرة اليد &nbsp;|&nbsp; 🎙️ تعليق رياضي &nbsp;|&nbsp;</span>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <h1 class="hero-title">🔥 وهج الصويحرة 🔥</h1>
+    <p class="hero-subtitle">نادي رياضي متكامل يجمع شغف الرياضة والتميز</p>
+    <div class="hero-clock" id="clock">⏰ --:--:--</div>
+    <div style="font-size:13px;color:#aaa;margin-top:4px" id="date-display">--</div>
+  </div>
+  <div class="welcome-banner" id="welcome-banner">🏆 مرحباً بأعضاء نادي وهج الصويحرة! اختر رياضتك وابدأ رحلتك نحو التميز</div>
+  <div class="section">
+    <div class="section-title">⚽ الرياضات</div>
+    <div class="cards-grid">
+      <div class="sport-card" onclick="openSportModal('basketball')"><span class="sport-icon">🏀</span><div class="sport-name">كرة السلة</div><div class="sport-count">12 طالب</div></div>
+      <div class="sport-card" onclick="openSportModal('handball')"><span class="sport-icon">🤾</span><div class="sport-name">كرة اليد</div><div class="sport-count">14 طالب</div></div>
+      <div class="sport-card" onclick="openSportModal('chess')"><span class="sport-icon">♟️</span><div class="sport-name">الشطرنج</div><div class="sport-count">8 طلاب</div></div>
+      <div class="sport-card" onclick="openSportModal('football')"><span class="sport-icon">⚽</span><div class="sport-name">كرة القدم</div><div class="sport-count">13 طالب</div></div>
+      <div class="sport-card" onclick="openSportModal('commentary')"><span class="sport-icon">🎙️</span><div class="sport-name">معلق رياضي</div><div class="sport-count">4 طلاب</div></div>
+      <div class="sport-card" onclick="openSportModal('gymnastics')"><span class="sport-icon">🤸</span><div class="sport-name">الجهاز</div><div class="sport-count">7 طلاب</div></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">📊 إحصائيات النادي</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+      <div style="background:rgba(255,107,26,0.1);border:1px solid rgba(255,107,26,0.3);border-radius:12px;padding:14px;text-align:center"><div style="font-size:26px;font-weight:800;color:#FF6B1A">58</div><div style="font-size:12px;color:#aaa">عضو</div></div>
+      <div style="background:rgba(255,107,26,0.1);border:1px solid rgba(255,107,26,0.3);border-radius:12px;padding:14px;text-align:center"><div style="font-size:26px;font-weight:800;color:#FFB347">6</div><div style="font-size:12px;color:#aaa">رياضة</div></div>
+      <div style="background:rgba(255,107,26,0.1);border:1px solid rgba(255,107,26,0.3);border-radius:12px;padding:14px;text-align:center"><div style="font-size:26px;font-weight:800;color:#00c864" id="total-pts-stat">0</div><div style="font-size:12px;color:#aaa">نقطة</div></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">📰 أخبار الرياضة</div>
+    <div class="game-card" onclick="window.open('https://news.google.com/search?q=sports','_blank')">
+      <span class="game-icon">📰</span><div class="game-name">أخبار الرياضة العالمية</div><div class="game-desc">اضغط لمشاهدة أحدث الأخبار الرياضية</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">📱 تطبيق أعضاء وهج الصويحرة</div>
+    <div class="contact-card">
+      <div style="font-size:12px;color:#FFB347;margin-bottom:6px">🎬 ارفع فيديوهاتك الرياضية مباشرة</div>
+      <div style="font-size:13px;color:#ccc;margin-bottom:10px">شارك لحظاتك الرياضية مع باقي الأعضاء</div>
+      <a class="contact-btn" href="mailto:sc2163@moe.om?subject=فيديو رياضي - وهج الصويحرة">📧 البريد: sc2163@moe.om</a>
+      <a class="contact-btn" style="margin-right:8px" href="https://wa.me/96826649218" target="_blank">💬 واتساب: 26649218</a>
+    </div>
+  </div>
+</div>
+
+<!-- SPORTS -->
+<div id="page-sports" class="page">
+  <div class="section">
+    <div class="section-title">⚽ جميع الرياضات</div>
+    <div class="cards-grid">
+      <div class="sport-card" onclick="openSportModal('basketball')"><span class="sport-icon">🏀</span><div class="sport-name">كرة السلة</div></div>
+      <div class="sport-card" onclick="openSportModal('handball')"><span class="sport-icon">🤾</span><div class="sport-name">كرة اليد</div></div>
+      <div class="sport-card" onclick="openSportModal('chess')"><span class="sport-icon">♟️</span><div class="sport-name">الشطرنج</div></div>
+      <div class="sport-card" onclick="openSportModal('football')"><span class="sport-icon">⚽</span><div class="sport-name">كرة القدم</div></div>
+      <div class="sport-card" onclick="openSportModal('commentary')"><span class="sport-icon">🎙️</span><div class="sport-name">معلق رياضي</div></div>
+      <div class="sport-card" onclick="openSportModal('gymnastics')"><span class="sport-icon">🤸</span><div class="sport-name">الجهاز</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEADERBOARD -->
+<div id="page-leaderboard" class="page">
+  <div class="section">
+    <div class="honor-card" id="honor-section" style="display:none">
+      <div style="font-size:50px;animation:bounce 1.5s ease-in-out infinite">👑</div>
+      <div style="font-size:13px;color:#aaa;margin-bottom:4px">🏆 لوحة الشرف - الأكثر تفاعلاً</div>
+      <div style="font-size:22px;font-weight:800;color:#FFD700" id="honor-name">--</div>
+      <div style="font-size:16px;color:#FFB347" id="honor-pts">0 نقطة</div>
+    </div>
+    <div class="section-title">🏆 المتصدرون</div>
+    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+      <button class="game-btn" onclick="sortLB('pts')">ترتيب بالنقاط</button>
+      <button class="game-btn" onclick="sortLB('name')">ترتيب بالاسم</button>
+    </div>
+    <div id="lb-list"></div>
+  </div>
+</div>
+
+<!-- GAMES -->
+<div id="page-games" class="page">
+  <div class="section" id="games-menu">
+    <div class="section-title">🎮 الألعاب التفاعلية</div>
+    <div class="cards-grid">
+      <div class="game-card" onclick="loadGame('memory')"><span class="game-icon">🃏</span><div class="game-name">بطاقات الذاكرة</div><div class="game-desc">طابق الرياضات</div></div>
+      <div class="game-card" onclick="loadGame('speedclick')"><span class="game-icon">⚡</span><div class="game-name">سرعة الضغط</div><div class="game-desc">كم هدفاً في 10 ثوان؟</div></div>
+      <div class="game-card" onclick="loadGame('hangman')"><span class="game-icon">🔤</span><div class="game-name">حروف اللاعب</div><div class="game-desc">خمّن الكلمة الرياضية</div></div>
+      <div class="game-card" onclick="loadGame('reflex')"><span class="game-icon">🎯</span><div class="game-name">اختبار الردة</div><div class="game-desc">اضغط الكرة عند ظهورها</div></div>
+      <div class="game-card" onclick="loadGame('penalty')"><span class="game-icon">⚽</span><div class="game-name">ركلة الجزاء</div><div class="game-desc">اختر الاتجاه الصحيح</div></div>
+      <div class="game-card" onclick="loadGame('jumble')"><span class="game-icon">🔀</span><div class="game-name">ترتيب الكلمات</div><div class="game-desc">رتب الحروف الرياضية</div></div>
+      <div class="game-card" onclick="loadGame('count')"><span class="game-icon">🔢</span><div class="game-name">عداد التمارين</div><div class="game-desc">سجّل تمارينك اليومية</div></div>
+      <div class="game-card" onclick="loadGame('trivia')"><span class="game-icon">🏅</span><div class="game-name">من سيربح؟</div><div class="game-desc">سباق الأسئلة السريعة</div></div>
+      <div class="game-card" onclick="loadGame('color')"><span class="game-icon">🎨</span><div class="game-name">لون الرياضة</div><div class="game-desc">اختر اللون الصحيح</div></div>
+      <div class="game-card" onclick="loadGame('typing')"><span class="game-icon">⌨️</span><div class="game-name">كتابة الرياضيين</div><div class="game-desc">اكتب الأسماء بسرعة</div></div>
+    </div>
+  </div>
+  <div class="section" id="game-container" style="display:none">
+    <button class="back-btn" onclick="backToGames()">← رجوع للألعاب</button>
+    <div id="game-content"></div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="page-quiz" class="page">
+  <div class="section" id="quiz-sports-menu">
+    <div class="section-title">🧠 المسابقات التثقيفية</div>
+    <div id="quiz-sport-btns"></div>
+  </div>
+  <div class="section" id="quiz-game-area" style="display:none">
+    <button class="back-btn" onclick="backToQuizMenu()">← رجوع</button>
+    <div id="quiz-content"></div>
+  </div>
+</div>
+
+<!-- CHALLENGES -->
+<div id="page-challenges" class="page">
+  <div class="section">
+    <div class="section-title">⚡ التحديات اليومية</div>
+    <div id="daily-challenge"></div>
+    <div style="margin-top:20px">
+      <div class="section-title">📅 تحديات الأسبوع</div>
+      <div id="weekly-challenges"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LINKS -->
+<div id="page-links" class="page">
+  <div class="section">
+    <div class="section-title">🔗 روابط تعليمية مفيدة</div>
+    <div class="cards-grid">
+      <a class="link-card" href="https://youtube.com/playlist?list=PL9_fyJVCwp0RoGDjFfzIoEI4xkTkx3YkU" target="_blank"><span class="link-icon">♟️</span><div class="link-name">تعلم الشطرنج</div><div class="link-desc">قائمة تعليمية متكاملة</div></a>
+      <a class="link-card" href="https://youtube.com/@amditv" target="_blank"><span class="link-icon">⚽</span><div class="link-name">تدريب كرة القدم</div><div class="link-desc">منصة AMDi TV</div></a>
+      <a class="link-card" href="https://youtube.com/@abdibasket" target="_blank"><span class="link-icon">🏀</span><div class="link-name">كرة السلة</div><div class="link-desc">دروس البطولة</div></a>
+      <a class="link-card" href="https://youtube.com/playlist?list=PLwCcGUrQsl8foQ1JoXtr6k2VdfRJttA1P" target="_blank"><span class="link-icon">🤸</span><div class="link-name">تعلم الجمباز</div><div class="link-desc">سلسلة تعليمية متكاملة</div></a>
+      <a class="link-card" href="https://youtube.com/playlist?list=PLyB7l6x5_Jj2gWsWMqug__1CrjMFmjkIJ" target="_blank"><span class="link-icon">🎙️</span><div class="link-name">التعليق الرياضي</div><div class="link-desc">دروس الاحتراف</div></a>
+      <a class="link-card" href="https://news.google.com/search?q=sports" target="_blank"><span class="link-icon">📰</span><div class="link-name">أخبار الرياضة</div><div class="link-desc">آخر الأخبار العالمية</div></a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="section">
+    <div class="section-title">📞 تواصل مع المدربة</div>
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,#FF6B1A,#FFB347);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:28px;animation:bounce 2s infinite">👩‍🏫</div>
+      <div style="font-size:18px;font-weight:700;color:#FF6B1A">أ. سعاد الشبلي</div>
+      <div style="font-size:13px;color:#aaa">مدربة نادي وهج الصويحرة</div>
+    </div>
+    <div class="contact-card">
+      <div style="font-size:12px;color:#FFB347;margin-bottom:6px">📧 البريد الإلكتروني للمدرسة</div>
+      <div style="font-size:15px;color:#fff">sc2163@moe.om</div>
+      <a class="contact-btn" href="mailto:sc2163@moe.om">📧 إرسال رسالة</a>
+    </div>
+    <div class="contact-card">
+      <div style="font-size:12px;color:#FFB347;margin-bottom:6px">💬 رقم الواتساب</div>
+      <div style="font-size:15px;color:#fff">26649218</div>
+      <a class="contact-btn" href="https://wa.me/96826649218" target="_blank">💬 فتح واتساب</a>
+    </div>
+    <div class="contact-card">
+      <div style="font-size:12px;color:#FFB347;margin-bottom:6px">🎬 رفع مقاطع الفيديو</div>
+      <div style="font-size:13px;color:#ccc;margin-bottom:10px">أرسل مقاطع الفيديو الرياضية مباشرة</div>
+      <a class="contact-btn" href="mailto:sc2163@moe.om?subject=فيديو رياضي - وهج الصويحرة">📧 إرسال بالإيميل</a>
+      <a class="contact-btn" style="margin-right:8px" href="https://wa.me/96826649218" target="_blank">💬 إرسال بالواتساب</a>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN -->
+<div id="page-login" class="page">
+  <div id="login-form-area">
+    <div class="login-box">
+      <div style="font-size:48px;animation:bounce 1.5s infinite">🔑</div>
+      <h2 style="font-size:20px;font-weight:800;color:#FF6B1A;margin:12px 0">تسجيل الدخول</h2>
+      <p style="font-size:13px;color:#aaa;margin-bottom:4px">أدخل رقم التسجيل الخاص بك</p>
+      <input type="number" class="login-input" id="reg-input" placeholder="0" min="0" max="58" />
+      <button class="login-btn" onclick="doLogin()">دخول →</button>
+      <div id="login-error" style="color:#ff5555;font-size:13px;margin-top:10px;display:none">❌ رقم التسجيل غير صحيح</div>
+    </div>
+  </div>
+  <div id="welcome-area" style="display:none">
+    <div class="welcome-screen">
+      <div class="welcome-avatar" id="welcome-icon">😊</div>
+      <div style="font-size:16px;color:#aaa;margin-bottom:8px">مرحباً بك في نادي وهج الصويحرة</div>
+      <div style="font-size:26px;font-weight:800;color:#FF6B1A" id="welcome-name-text">--</div>
+      <div style="font-size:15px;color:#aaa;margin-top:8px" id="welcome-msg-text"></div>
+      <div style="margin-top:20px;font-size:28px">🏆🔥⚽🏀♟️🤸🤾🎙️</div>
+      <button class="login-btn" style="margin-top:16px" onclick="logout()">← تسجيل الخروج</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="sport-modal" class="modal-overlay" style="display:none" onclick="closeModal(event)">
+  <div class="modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <div class="modal-title" id="modal-title">--</div>
+      <button class="modal-close" onclick="closeSportModal()">✕</button>
+    </div>
+    <div id="modal-students"></div>
+  </div>
+</div>
+
+<script>
+const members = [
+  {id:0,name:"أ. سعاد الشبلي",icon:"👩‍🏫",role:"مدربة"},
+  {id:1,name:"آمنة وليد الكندي",icon:"🏀",role:"كرة السلة"},
+  {id:2,name:"ريتال محمد الرحبي",icon:"🏀",role:"كرة السلة"},
+  {id:3,name:"عائشة محمد البلوشي",icon:"🏀",role:"كرة السلة"},
+  {id:4,name:"رنيم علي الفارسي",icon:"🏀",role:"كرة السلة"},
+  {id:5,name:"ريان عاصم الشبلي",icon:"🏀",role:"كرة السلة"},
+  {id:6,name:"فاطمة فايز المقبالي",icon:"🏀",role:"كرة السلة"},
+  {id:7,name:"خديجة محمود الشيزاوي",icon:"🏀",role:"كرة السلة"},
+  {id:8,name:"طيف خليل الشيزاوي",icon:"🏀",role:"كرة السلة"},
+  {id:9,name:"فاطمة سعيد البادي",icon:"🏀",role:"كرة السلة"},
+  {id:10,name:"ميرا أحمد الياسي",icon:"🏀",role:"كرة السلة"},
+  {id:11,name:"مروة يونس البلوشية",icon:"🏀",role:"كرة السلة"},
+  {id:12,name:"نور خالد البلوشي",icon:"🏀",role:"كرة السلة"},
+  {id:13,name:"عبدالله طه البلوشي",icon:"🤾",role:"كرة اليد"},
+  {id:14,name:"إبراهيم أحمد البلوشي",icon:"🤾",role:"كرة اليد"},
+  {id:15,name:"محمد رائد الزعابي",icon:"🤾",role:"كرة اليد"},
+  {id:16,name:"مشاري سعيد العيسائي",icon:"🤾",role:"كرة اليد"},
+  {id:17,name:"أحمد محمد الشبلي",icon:"🤾",role:"كرة اليد"},
+  {id:18,name:"علي هلال الفارسي",icon:"🤾",role:"كرة اليد"},
+  {id:19,name:"سعود علي المقبالي",icon:"🤾",role:"كرة اليد"},
+  {id:20,name:"خالد محمد الشبلي",icon:"🤾",role:"كرة اليد"},
+  {id:21,name:"أحمد مهند اليماني",icon:"🤾",role:"كرة اليد"},
+  {id:22,name:"سعود سالم المقبالي",icon:"🤾",role:"كرة اليد"},
+  {id:23,name:"يوسف سعيد البلوشي",icon:"🤾",role:"كرة اليد"},
+  {id:24,name:"يوسف محمد الشبلي",icon:"🤾",role:"كرة اليد"},
+  {id:25,name:"سيف سالم المعمري",icon:"🤾",role:"كرة اليد"},
+  {id:26,name:"عبدالرحمن محمد النوفلي",icon:"🤾",role:"كرة اليد"},
+  {id:27,name:"الزين سيف مصبح الشافعي",icon:"♟️",role:"شطرنج"},
+  {id:28,name:"عبدالعزيز سامر الخديش",icon:"♟️",role:"شطرنج"},
+  {id:29,name:"نوفل محمد السعيدي",icon:"♟️",role:"شطرنج"},
+  {id:30,name:"مهرة ناجي البلوشي",icon:"♟️",role:"شطرنج"},
+  {id:31,name:"دانة أحمد الروشدي",icon:"♟️",role:"شطرنج"},
+  {id:32,name:"الوارث عبد الواحد الشبلي",icon:"♟️",role:"شطرنج"},
+  {id:33,name:"محمد أحمد المعمري",icon:"♟️",role:"شطرنج"},
+  {id:34,name:"راشد أحمد المعمري",icon:"♟️",role:"شطرنج"},
+  {id:35,name:"البراء أحمد البلوشي",icon:"⚽",role:"كرة القدم"},
+  {id:36,name:"مشاري أحمد الشبلي",icon:"⚽",role:"كرة القدم"},
+  {id:37,name:"اياد محمد الشبلي",icon:"⚽",role:"كرة القدم"},
+  {id:38,name:"عامر سعيد الشبلي",icon:"⚽",role:"كرة القدم"},
+  {id:39,name:"فراس نايف النزواني",icon:"⚽",role:"كرة القدم"},
+  {id:40,name:"سيف سالم المعمري",icon:"⚽",role:"كرة القدم"},
+  {id:41,name:"سيف حمود الحوسني",icon:"⚽",role:"كرة القدم"},
+  {id:42,name:"عمر خالد البلوشي",icon:"⚽",role:"كرة القدم"},
+  {id:43,name:"أوس سعيد الشبلي",icon:"⚽",role:"كرة القدم"},
+  {id:44,name:"عبد المنعم عبدالله الروشدي",icon:"⚽",role:"كرة القدم"},
+  {id:45,name:"عبدالعزيز طلال المقبالي",icon:"⚽",role:"كرة القدم"},
+  {id:46,name:"سالم عبد الرحمن الحمداني",icon:"⚽",role:"كرة القدم"},
+  {id:47,name:"إبراهيم أحمد البلوشي",icon:"⚽",role:"كرة القدم"},
+  {id:48,name:"سعود عبدالعزيز المقبالي",icon:"🎙️",role:"معلق رياضي"},
+  {id:49,name:"محمد رائد الزعابي",icon:"🎙️",role:"معلق رياضي"},
+  {id:50,name:"أوس سعيد الشبلي",icon:"🎙️",role:"معلق رياضي"},
+  {id:51,name:"علاء الروشدي",icon:"🎙️",role:"معلق رياضي"},
+  {id:52,name:"مهرة ناجي البلوشي",icon:"🤸",role:"جهاز"},
+  {id:53,name:"لمار يوسف المعمري",icon:"🤸",role:"جهاز"},
+  {id:54,name:"لين أحمد العيسائي",icon:"🤸",role:"جهاز"},
+  {id:55,name:"زينب محمد البلوشي",icon:"🤸",role:"جهاز"},
+  {id:56,name:"القيصر رائد الحضرمي",icon:"🤸",role:"جهاز"},
+  {id:57,name:"يوسف آدم البلوشي",icon:"🤸",role:"جهاز"},
+  {id:58,name:"آلاء إبراهيم البدراني",icon:"🤸",role:"جهاز"}
+];
+
+const sports = {
+  basketball:{name:"🏀 كرة السلة",ids:[1,2,3,4,5,6,7,8,9,10,11,12]},
+  handball:{name:"🤾 كرة اليد",ids:[13,14,15,16,17,18,19,20,21,22,23,24,25,26]},
+  chess:{name:"♟️ الشطرنج",ids:[27,28,29,30,31,32,33,34]},
+  football:{name:"⚽ كرة القدم",ids:[35,36,37,38,39,40,41,42,43,44,45,46,47]},
+  commentary:{name:"🎙️ المعلق الرياضي",ids:[48,49,50,51]},
+  gymnastics:{name:"🤸 الجهاز",ids:[52,53,54,55,56,57,58]}
+};
+
+let pts = {};
+try { pts = JSON.parse(localStorage.getItem('wahaj_pts') || '{}'); } catch(e) { pts = {}; }
+members.forEach(m => { if (pts[m.id] === undefined) pts[m.id] = Math.floor(Math.random()*50); });
+savePts();
+
+function savePts() {
+  try { localStorage.setItem('wahaj_pts', JSON.stringify(pts)); } catch(e) {}
+  const el = document.getElementById('total-pts-stat');
+  if(el) el.textContent = Object.values(pts).reduce((a,b)=>a+b,0);
+}
+
+function addPts(id, n) { pts[id] = (pts[id]||0) + n; savePts(); renderLB(); }
+
+function updateClock() {
+  const now = new Date();
+  const t = now.toLocaleTimeString('ar-OM',{timeZone:'Asia/Muscat',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+  const d = now.toLocaleDateString('ar-OM',{timeZone:'Asia/Muscat',weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  const ce = document.getElementById('clock'); if(ce) ce.textContent = '⏰ ' + t;
+  const de = document.getElementById('date-display'); if(de) de.textContent = d;
+}
+setInterval(updateClock, 1000); updateClock();
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  event.currentTarget && event.currentTarget.classList.add('active');
+  if(id==='leaderboard') renderLB();
+  if(id==='challenges') renderChallenges();
+  if(id==='quiz') renderQuizMenu();
+}
+
+function openSportModal(key) {
+  const sport = sports[key];
+  document.getElementById('modal-title').textContent = sport.name;
+  const container = document.getElementById('modal-students');
+  container.innerHTML = '';
+  sport.ids.forEach(id => {
+    const m = members.find(x=>x.id===id);
+    if(!m) return;
+    const initials = m.name.split(' ').slice(0,2).map(w=>w[0]).join('');
+    container.innerHTML += `<div class="student-item"><div class="student-avatar">${initials}</div><div><div style="font-size:14px">${m.name}</div><div style="font-size:11px;color:#aaa">${m.role}</div></div><div style="margin-right:auto;font-size:12px;color:#FFB347">⭐ ${pts[id]||0}</div></div>`;
+  });
+  document.getElementById('sport-modal').style.display='flex';
+}
+function closeSportModal() { document.getElementById('sport-modal').style.display='none'; }
+function closeModal(e) { if(e.target.id==='sport-modal') closeSportModal(); }
+
+function renderLB() {
+  const list = document.getElementById('lb-list');
+  if(!list) return;
+  const sorted = members.filter(m=>m.id>0).map(m=>({...m,p:pts[m.id]||0})).sort((a,b)=>b.p-a.p);
+  const maxP = sorted[0]?.p || 1;
+  const honor = sorted[0];
+  if(honor) {
+    document.getElementById('honor-section').style.display='block';
+    document.getElementById('honor-name').textContent = honor.name;
+    document.getElementById('honor-pts').textContent = honor.p + ' نقطة';
+  }
+  list.innerHTML = sorted.map((m,i)=>{
+    const rc = i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank-n';
+    const pct = Math.round((m.p/maxP)*100);
+    return `<div class="lb-item"><div class="lb-rank ${rc}">${i+1}</div><div class="student-avatar" style="width:32px;height:32px;font-size:12px">${m.name.split(' ').slice(0,2).map(w=>w[0]).join('')}</div><div style="flex:1;min-width:0"><div style="font-size:14px">${m.name}</div><div class="lb-pts-bar"><div class="lb-pts-fill" style="width:${pct}%"></div></div><div style="font-size:11px;color:#888">${m.role}</div></div><div style="text-align:center"><div style="font-size:14px;font-weight:700;color:#FFB347">${m.p}</div><button class="add-pts-btn" onclick="addPts(${m.id},10)">+10</button></div></div>`;
+  }).join('');
+}
+
+function sortLB(by) {
+  const list = document.getElementById('lb-list');
+  if(!list) return;
+  const sorted = members.filter(m=>m.id>0).map(m=>({...m,p:pts[m.id]||0}));
+  if(by==='pts') sorted.sort((a,b)=>b.p-a.p); else sorted.sort((a,b)=>a.name.localeCompare(b.name,'ar'));
+  const maxP = Math.max(...sorted.map(m=>m.p),1);
+  list.innerHTML = sorted.map((m,i)=>{
+    const rc = i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank-n';
+    const pct = Math.round((m.p/maxP)*100);
+    return `<div class="lb-item"><div class="lb-rank ${rc}">${i+1}</div><div class="student-avatar" style="width:32px;height:32px;font-size:12px">${m.name.split(' ').slice(0,2).map(w=>w[0]).join('')}</div><div style="flex:1;min-width:0"><div style="font-size:14px">${m.name}</div><div class="lb-pts-bar"><div class="lb-pts-fill" style="width:${pct}%"></div></div><div style="font-size:11px;color:#888">${m.role}</div></div><div style="text-align:center"><div style="font-size:14px;font-weight:700;color:#FFB347">${m.p}</div><button class="add-pts-btn" onclick="addPts(${m.id},10)">+10</button></div></div>`;
+  }).join('');
+}
+
+const quizData = {
+  football:[
+    {q:"كم عدد لاعبي فريق كرة القدم في الملعب؟",opts:["9","10","11","12"],ans:2},
+    {q:"ما مدة مباراة كرة القدم الأساسية؟",opts:["80 دقيقة","90 دقيقة","100 دقيقة","120 دقيقة"],ans:1},
+    {q:"ما اسم بطولة الأندية الأشهر في أوروبا؟",opts:["الدوري العالمي","كأس العالم للأندية","كأس الاتحاد","دوري الأبطال"],ans:3},
+    {q:"كم مرة فازت البرازيل بكأس العالم؟",opts:["3","4","5","6"],ans:2},
+    {q:"أي دولة استضافت كأس العالم 2022؟",opts:["الإمارات","السعودية","قطر","البحرين"],ans:2},
+    {q:"ما لون البطاقة التي تعني الطرد النهائي؟",opts:["صفراء","حمراء","خضراء","زرقاء"],ans:1},
+    {q:"ما الفريق الذي فاز بأول كأس عالم عام 1930؟",opts:["الأرجنتين","البرازيل","أوروغواي","إيطاليا"],ans:2},
+    {q:"كم مرة فازت ألمانيا بكأس العالم؟",opts:["2","3","4","5"],ans:2},
+    {q:"ما طول ملعب كرة القدم القياسي؟",opts:["90-120 متر","80-110 متر","100-130 متر","70-100 متر"],ans:0},
+    {q:"من هو الهداف التاريخي لبطولة دوري أبطال أوروبا؟",opts:["ميسي","رونالدو","بنزيمة","فان نيستلروي"],ans:1},
+    {q:"ما مصطلح هاتريك؟",opts:["هدفان","ثلاثة أهداف","أربعة أهداف","خمسة أهداف"],ans:1},
+    {q:"ما تقنية مراجعة قرارات الحكام؟",opts:["تقنية الأشعة","VAR","الكاميرا الرقمية","الفيديو"],ans:1},
+    {q:"ما أكبر ملعب لكرة القدم في العالم؟",opts:["كامب نو","ويمبلي","ملعب رونغراد","سانتياغو برنابيو"],ans:2},
+    {q:"متى بدأت كأس العالم لكرة القدم؟",opts:["1920","1925","1930","1935"],ans:2},
+    {q:"ما لون قميص منتخب البرازيل الأساسي؟",opts:["أحمر","أصفر وأخضر","أزرق","أبيض"],ans:1},
+    {q:"ما قانون التسلل في كرة القدم؟",opts:["قانون اللمس","قانون التسلل","قانون الخطأ","قانون العرضية"],ans:1},
+    {q:"ما أقصى وقت إضافي لكل شوط؟",opts:["5 دقائق","10 دقائق","15 دقيقة","يحدده الحكم"],ans:3},
+    {q:"ما اسم الكأس التي تُمنح لبطل كأس العالم؟",opts:["كأس الأمم","كأس جول ريمي","كأس فيفا","كأس الذهب"],ans:1},
+    {q:"ما عدد لاعبي كل فريق في كرة القدم الخماسية؟",opts:["4","5","6","7"],ans:1},
+    {q:"ما لون قميص منتخب عُمان؟",opts:["أبيض وأحمر","أزرق","أخضر","أصفر"],ans:0}
+  ],
+  basketball:[
+    {q:"كم عدد لاعبي كرة السلة في كل فريق على الملعب؟",opts:["4","5","6","7"],ans:1},
+    {q:"كم نقطة تساوي الرمية من وراء خط الثلاث نقاط؟",opts:["1","2","3","4"],ans:2},
+    {q:"ما مدة ربع اللعب في NBA؟",opts:["8 دقائق","10 دقائق","12 دقيقة","15 دقيقة"],ans:2},
+    {q:"كم ارتفاع حلقة كرة السلة؟",opts:["2.5 متر","3.05 متر","3.5 متر","2.8 متر"],ans:1},
+    {q:"من اخترع لعبة كرة السلة؟",opts:["جيمس نايسميث","ويليام مورغان","فرنسيس بيبودي","تشارلز نيداب"],ans:0},
+    {q:"ما قيمة رمية الحرة؟",opts:["1 نقطة","2 نقطة","3 نقاط","0.5"],ans:0},
+    {q:"كم ثانية يجب أن يسجل الفريق هدفاً في NBA؟",opts:["16","20","24","30"],ans:2},
+    {q:"في أي عام أُدرجت كرة السلة في الألعاب الأولمبية؟",opts:["1928","1932","1936","1940"],ans:2},
+    {q:"ما الفريق الأكثر فوزاً ببطولات NBA؟",opts:["لوس أنجلوس ليكرز","بوسطن سيلتيكس","شيكاغو بولز","ميامي هيت"],ans:1},
+    {q:"ما اسم حركة المراوغة في كرة السلة؟",opts:["التمريرة","الدريبل","التهديف","الاستئناف"],ans:1},
+    {q:"ما معنى حرف N في NBA؟",opts:["New","National","North","Net"],ans:1},
+    {q:"ما اسم رمية الجزاء في كرة السلة؟",opts:["التسديدة الحرة","الرمية الجانبية","الرمية العقوبة","رمية المنطقة"],ans:0},
+    {q:"كم عرض ملعب كرة السلة القياسي؟",opts:["10 متر","14 متر","15 متر","28 متر"],ans:3},
+    {q:"ما قاعدة البقاء في منطقة الحلقة؟",opts:["قاعدة الثلاثة","قاعدة الخمسة","قاعدة اللمس","قاعدة الحلقة"],ans:0},
+    {q:"من يحمل لقب أفضل لاعب في تاريخ NBA؟",opts:["ليبرون","كوبي","مايكل جوردان","شاكيل"],ans:2}
+  ],
+  handball:[
+    {q:"كم عدد لاعبي كرة اليد في كل فريق؟",opts:["5","6","7","8"],ans:2},
+    {q:"ما مدة شوط كرة اليد؟",opts:["20 دقيقة","25 دقيقة","30 دقيقة","35 دقيقة"],ans:2},
+    {q:"ما أبعاد ملعب كرة اليد الرسمي؟",opts:["30×15","40×20","20×10","50×25"],ans:1},
+    {q:"ما ارتفاع مرمى كرة اليد؟",opts:["2 متر","2.5 متر","3 متر","3.5 متر"],ans:0},
+    {q:"ما عرض مرمى كرة اليد؟",opts:["2 متر","3 متر","4 متر","5 متر"],ans:1},
+    {q:"في أي عام أُدرجت كرة اليد في الألعاب الأولمبية؟",opts:["1952","1972","1964","1984"],ans:1},
+    {q:"ما الدولة المنشأة لكرة اليد كرياضة حديثة؟",opts:["فرنسا","الدنمارك","ألمانيا","السويد"],ans:2},
+    {q:"ما اسم رمية البداية في كرة اليد؟",opts:["رمية الوسط","رمية الانطلاق","رمية البدء","التمريرة الأولى"],ans:0},
+    {q:"ما لون بطاقة الإنذار الأولى في كرة اليد؟",opts:["الأحمر","الأصفر","الأخضر","الأزرق"],ans:1},
+    {q:"كم يمتد قطر منطقة المرمى من الخط؟",opts:["4 متر","6 متر","8 متر","10 متر"],ans:1},
+    {q:"ما أقصى مدة يحتفظ بها اللاعب بالكرة؟",opts:["2 ثانية","3 ثانية","5 ثانية","7 ثانية"],ans:1},
+    {q:"كم مرة فازت فرنسا ببطولة العالم لكرة اليد؟",opts:["2","4","6","8"],ans:2},
+    {q:"ما البطولة الأهم في كرة اليد أوروبياً؟",opts:["كأس أوروبا","دوري أبطال EHF","كأس البطولة","الدوري الأوروبي"],ans:1},
+    {q:"ما الخطأ الذي يُعاقب عليه بضربة جزاء؟",opts:["الخطأ البسيط","الخطأ الصارم","الخطأ المتعمد","الخطأ داخل المنطقة"],ans:3},
+    {q:"ما الخط الذي لا يتجاوزه اللاعبون نحو المرمى؟",opts:["خط الوسط","خط المنطقة","خط الارتكاز","خط الحارس"],ans:1}
+  ],
+  gymnastics:[
+    {q:"ما عدد الأجهزة في الجمباز الفني للرجال؟",opts:["4","5","6","7"],ans:2},
+    {q:"في أي عام أُدرج الجمباز في الألعاب الأولمبية الحديثة؟",opts:["1896","1904","1912","1920"],ans:0},
+    {q:"ما الجهاز الخاص بالجمباز النسائي دون الرجالي؟",opts:["العارضة","الحلق","العقلة","القفز"],ans:0},
+    {q:"ما أعلى درجة في مسابقة الجمباز الفني تاريخياً؟",opts:["10","15","20","5"],ans:0},
+    {q:"ما الدولة الأقوى تاريخياً في الجمباز؟",opts:["الولايات المتحدة","رومانيا","الاتحاد السوفيتي","الصين"],ans:2},
+    {q:"ما العمر الأدنى للمشاركة في الجمباز الأولمبي؟",opts:["14","16","18","20"],ans:1},
+    {q:"ما أعلى ارتفاع يصله جهاز العقلة؟",opts:["2 متر","2.4 متر","2.8 متر","3 متر"],ans:2},
+    {q:"من هو مخترع الجمباز كرياضة منظمة؟",opts:["ألفريد فيلبس","يوهان غوتسموتس","لودفيغ يان","فريدريك ييا"],ans:2},
+    {q:"ما اسم جهاز الجمباز ذو الأشرطة المتوازية؟",opts:["العارضة المزدوجة","القضبان المتوازية","جهاز الجسر","الحلق"],ans:1},
+    {q:"ما حركة تدوير الجسم 360 درجة في الهواء؟",opts:["لولبة","نقلة","شقلبة","قلبة"],ans:0},
+    {q:"كم دقيقة يستغرق تمرين الأرضيات في الجمباز؟",opts:["60-70 ثانية","70-90 ثانية","50-60 ثانية","90-110 ثانية"],ans:1},
+    {q:"ما اسم الحركة حين يقف اللاعب على يديه؟",opts:["القفز","الشقلبة","الوقوف اليدوي","اللفة"],ans:2},
+    {q:"من أشهر لاعبة جمباز في التاريخ؟",opts:["نيا دينيس","سيمون بايلز","كيري ستروغ","ناديا كومانيتش"],ans:3},
+    {q:"ما اسم الجهاز الذي يقفز عنه اللاعبون؟",opts:["الحصان","المنصة","الطاولة","البرج"],ans:2},
+    {q:"ما اسم حركة الدوران حول جهاز العارضة؟",opts:["اللفة","الدوران","الانقلاب","الشقلبة"],ans:1}
+  ],
+  commentary:[
+    {q:"ما أهم صفة في المعلق الرياضي؟",opts:["الصوت العالي فقط","المعرفة الرياضية الواسعة","التخصص في رياضة واحدة","السرعة فقط"],ans:1},
+    {q:"ما الفرق بين المعلق الأرضي والمعلق من الاستوديو؟",opts:["لا فرق","الأول في الملعب والثاني عن بُعد","الأول أفضل صوتاً","الثاني أكثر خبرة"],ans:1},
+    {q:"ما مصطلح هاتريك في التعليق؟",opts:["هدفان","ثلاثة أهداف","أربعة أهداف","خمسة أهداف"],ans:1},
+    {q:"ما الذي يُميّز أسلوب التعليق العربي؟",opts:["الهدوء الدائم","الانفعال والحيوية","قصر الجمل","الأسلوب العلمي"],ans:1},
+    {q:"ما دور المحلل الرياضي في التعليق؟",opts:["تعليق الأهداف فقط","تقديم التحليل التكتيكي","قراءة النتائج","ترجمة التعليق"],ans:1},
+    {q:"ما تقنية VAR؟",opts:["تقنية صوتية","تقنية مراجعة الفيديو","تقنية قياس المسافة","تقنية رصد اللاعبين"],ans:1},
+    {q:"ما مصطلح التمريرة الأخيرة قبل الهدف؟",opts:["التمريرة الذهبية","التمريرة الحاسمة","التمريرة الأخيرة","الأسيست"],ans:3},
+    {q:"ما معنى مصطلح تيكي تاكا؟",opts:["أسلوب دفاعي قوي","أسلوب هجوم مباشر","أسلوب تمرير قصير سريع","أسلوب ضغط عالٍ"],ans:2},
+    {q:"ما القناة الرياضية الأشهر عربياً؟",opts:["روتانا","MBC","beIN Sports","أبوظبي الرياضية"],ans:2},
+    {q:"ما الطريقة الصوتية للمعلق عند التهديف؟",opts:["الصراخ بحماس","الصمت","الإطالة","الهمس"],ans:0},
+    {q:"ما الفرق بين التعليق المباشر والمسجّل؟",opts:["لا فرق","المباشر في وقت الحدث","المسجّل أفضل","المباشر أسهل"],ans:1},
+    {q:"ما مصطلح إيقاف اللعب مؤقتاً بالعربية؟",opts:["الاستراحة","الإيقاف","التوقف","المهلة"],ans:3},
+    {q:"ما مصطلح الكرة التي تضرب الأرض قبل المرمى؟",opts:["كرة مدحرجة","كرة جوف","كرة ارتداد","كرة عرضية"],ans:2},
+    {q:"ما مصطلح الإطار الذهبي في كرة القدم؟",opts:["الهدف في الوقت الإضافي","الفريق الأفضل","المباراة الكبرى","هدف يحسم البطولة"],ans:3},
+    {q:"من أشهر المعلقين الرياضيين العرب تاريخياً؟",opts:["عصام الشوالي","رؤوف خليف","فهد العتيبي","جميع ما سبق"],ans:3}
+  ]
+};
+
+let quizState = {sport:null,qIdx:0,score:0,answered:false};
+function renderQuizMenu() {
+  const c = document.getElementById('quiz-sport-btns');
+  if(!c) return;
+  const labels = {football:'⚽ كرة القدم (20 سؤال)',basketball:'🏀 كرة السلة (15 سؤال)',handball:'🤾 كرة اليد (15 سؤال)',gymnastics:'🤸 الجهاز/الجمباز (15 سؤال)',commentary:'🎙️ التعليق الرياضي (15 سؤال)'};
+  c.innerHTML = Object.entries(labels).map(([k,v])=>`<button class="quiz-sport-btn" onclick="startQuiz('${k}')">${v}</button>`).join('');
+}
+function startQuiz(sport) {
+  quizState = {sport,qIdx:0,score:0,answered:false};
+  document.getElementById('quiz-sports-menu').style.display='none';
+  document.getElementById('quiz-game-area').style.display='block';
+  renderQuestion();
+}
+function renderQuestion() {
+  const qs = quizData[quizState.sport];
+  const c = document.getElementById('quiz-content');
+  if(quizState.qIdx >= qs.length) {
+    const pct = Math.round((quizState.score/qs.length)*100);
+    c.innerHTML = `<div style="background:rgba(255,107,26,0.1);border:1px solid rgba(255,107,26,0.3);border-radius:12px;padding:20px;text-align:center"><div style="font-size:48px;animation:bounce 1.5s infinite">${pct>=80?'🏆':pct>=50?'😊':'💪'}</div><div style="font-size:22px;font-weight:800;color:#FF6B1A;margin:12px 0">انتهت المسابقة!</div><div style="font-size:16px;color:#fff">نتيجتك: <strong style="color:#FFB347">${quizState.score} / ${qs.length}</strong></div><div style="font-size:14px;color:#aaa;margin:8px 0">${pct}% صحيحة</div><div style="font-size:13px;color:#FFB347;margin-top:8px">${pct>=80?'ممتاز! أنت بطل! 🌟':pct>=50?'جيد! استمر في التحسن 👍':'حاول مجدداً وستتحسن! 💪'}</div><button class="game-btn" style="margin-top:16px" onclick="startQuiz('${quizState.sport}')">إعادة المسابقة</button></div>`;
+    return;
+  }
+  const q = qs[quizState.qIdx];
+  const prog = Math.round((quizState.qIdx/qs.length)*100);
+  c.innerHTML = `<div style="margin-bottom:12px"><div style="font-size:12px;color:#aaa;margin-bottom:4px">سؤال ${quizState.qIdx+1} من ${qs.length}</div><div class="quiz-progress"><div class="quiz-prog-fill" style="width:${prog}%"></div></div><div style="font-size:12px;color:#FFB347;margin-top:4px">النقاط: ${quizState.score}</div></div><div style="font-size:16px;font-weight:600;color:#fff;margin-bottom:16px;line-height:1.6">${q.q}</div>${q.opts.map((o,i)=>`<button class="quiz-opt" id="qopt-${i}" onclick="answerQ(${i})">${o}</button>`).join('')}`;
+  quizState.answered = false;
+}
+function answerQ(idx) {
+  if(quizState.answered) return;
+  quizState.answered = true;
+  const q = quizData[quizState.sport][quizState.qIdx];
+  document.querySelectorAll('.quiz-opt').forEach((b,i)=>{if(i===q.ans)b.classList.add('correct');else if(i===idx)b.classList.add('wrong');b.disabled=true;});
+  if(idx===q.ans) quizState.score++;
+  setTimeout(()=>{quizState.qIdx++;renderQuestion();},1200);
+}
+function backToQuizMenu() {
+  document.getElementById('quiz-sports-menu').style.display='block';
+  document.getElementById('quiz-game-area').style.display='none';
+}
+
+const allChallenges = [
+  {icon:"⚽",text:"سجّل 10 ركلات على المرمى واحسب كم دخلت منها",pts:20},
+  {icon:"🏀",text:"نفّذ 20 تمريرة متتالية مع زميل دون أن تسقط الكرة",pts:25},
+  {icon:"♟️",text:"حلّ لغز شطرنج: كيف تُشطب الملك في خطوة واحدة؟",pts:30},
+  {icon:"🤸",text:"نفّذ 3 لفات أمامية متتالية على الأرض بشكل صحيح",pts:20},
+  {icon:"🎙️",text:"علّق على مقطع فيديو رياضي مدته دقيقة كاملة دون توقف",pts:35},
+  {icon:"🤾",text:"نفّذ 15 تمريرة ارتدادية على الجدار دون توقف",pts:25},
+  {icon:"⚽",text:"تدرّب على المهارة التقنية: 50 لمسة متتالية بالقدم",pts:30}
+];
+function renderChallenges() {
+  const today = new Date();
+  const dayIdx = today.getDay();
+  const todayC = allChallenges[dayIdx % allChallenges.length];
+  const done = JSON.parse(localStorage.getItem('done_challenges')||'{}');
+  const todayKey = today.toDateString();
+  const el = document.getElementById('daily-challenge');
+  if(!el) return;
+  const isDone = done[todayKey];
+  el.innerHTML = `<div class="challenge-box"><div class="challenge-badge">⚡ تحدي اليوم</div><div style="font-size:40px;margin:8px 0;animation:bounce 1.5s infinite">${todayC.icon}</div><div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.5">${todayC.text}</div><div style="color:#FFB347;font-size:14px">🏅 مكافأة: ${todayC.pts} نقطة</div><button class="done-btn" onclick="completeChallenge('${todayKey}',${todayC.pts})" ${isDone?'disabled':''>${isDone?'✅ تم الإنجاز!':'✔️ أنجزت التحدي!'}</button></div>`;
+  const weekEl = document.getElementById('weekly-challenges');
+  if(!weekEl) return;
+  weekEl.innerHTML = allChallenges.map((c,i)=>`<div style="background:rgba(255,107,26,0.05);border:1px solid rgba(255,107,26,0.2);border-radius:10px;padding:12px;margin-bottom:8px;display:flex;align-items:center;gap:10px"><span style="font-size:24px">${c.icon}</span><div style="flex:1"><div style="font-size:14px;color:#fff">${c.text}</div><div style="font-size:12px;color:#FFB347">🏅 ${c.pts} نقطة</div></div><div style="font-size:11px;color:#888">${['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'][i]}</div></div>`).join('');
+}
+function completeChallenge(key, ptsVal) {
+  const done = JSON.parse(localStorage.getItem('done_challenges')||'{}');
+  done[key] = true;
+  localStorage.setItem('done_challenges', JSON.stringify(done));
+  renderChallenges();
+  const randomId = Math.floor(Math.random()*58)+1;
+  addPts(randomId, ptsVal);
+  alert('🎉 أحسنت! حصلت على ' + ptsVal + ' نقطة!');
+}
+
+function doLogin() {
+  const val = parseInt(document.getElementById('reg-input').value);
+  const member = members.find(m=>m.id===val);
+  if(!isNaN(val) && member) {
+    document.getElementById('login-error').style.display='none';
+    document.getElementById('login-form-area').style.display='none';
+    document.getElementById('welcome-area').style.display='block';
+    document.getElementById('welcome-name-text').textContent = member.name;
+    document.getElementById('welcome-icon').textContent = member.icon;
+    const msgs = ["أهلاً وسهلاً! جاهز لتحقيق المجد؟ 🌟","يسعدنا وجودك معنا! تألّق في رياضتك 🏆","الطريق للبطولة يبدأ من هنا! 💪","نسعد بانضمامك لنادي وهج الصويحرة 🔥"];
+    document.getElementById('welcome-msg-text').textContent = msgs[Math.floor(Math.random()*msgs.length)];
+    if(member.id>0) document.getElementById('welcome-banner').textContent = '🔥 مرحباً ' + member.name + '! أنت الآن في نادي وهج الصويحرة!';
+  } else {
+    document.getElementById('login-error').style.display='block';
+  }
+}
+function logout() {
+  document.getElementById('login-form-area').style.display='block';
+  document.getElementById('welcome-area').style.display='none';
+  document.getElementById('reg-input').value='';
+}
+
+function loadGame(type) {
+  document.getElementById('games-menu').style.display='none';
+  document.getElementById('game-container').style.display='block';
+  const content = document.getElementById('game-content');
+  if(type==='memory') {
+    const symbols=['⚽','🏀','🤾','♟️','🤸','🎙️','🏐','🎯'];
+    let cards=[...symbols,...symbols].sort(()=>Math.random()-0.5).map((s,i)=>({id:i,sym:s,flipped:false,matched:false}));
+    let first=null,second=null,lock=false,moves=0,matched_count=0;
+    function renderMemory() {
+      content.innerHTML=`<div class="game-area"><h3 style="color:#FF6B1A;text-align:center;margin-bottom:8px">🃏 بطاقات الذاكرة</h3><div class="game-stat">حركات: ${moves} | 🃏 ${matched_count}/8</div><div class="memory-grid" id="mgrid"></div></div>`;
+      const grid=document.getElementById('mgrid');
+      cards.forEach((c,i)=>{const div=document.createElement('div');div.className='mem-card'+(c.flipped||c.matched?' flipped':'')+(c.matched?' matched':'');div.textContent=(c.flipped||c.matched)?c.sym:'?';if(!c.matched)div.onclick=()=>flipCard(i);grid.appendChild(div);});
+    }
+    function flipCard(i) {
+      if(lock||cards[i].flipped||cards[i].matched)return;
+      cards[i].flipped=true;
+      if(!first){first=i;renderMemory();return;}
+      second=i;lock=true;moves++;renderMemory();
+      setTimeout(()=>{if(cards[first].sym===cards[second].sym){cards[first].matched=cards[second].matched=true;matched_count++;}else{cards[first].flipped=cards[second].flipped=false;}first=second=null;lock=false;renderMemory();if(matched_count===8)setTimeout(()=>alert('🏆 ممتاز! أكملت اللعبة في '+moves+' حركة!'),200);},900);
+    }
+    window.flipCard=flipCard;renderMemory();
+  } else if(type==='speedclick') {
+    let score=0,time=10,timer=null;
+    content.innerHTML=`<div class="game-area" style="text-align:center"><h3 style="color:#FF6B1A;margin-bottom:8px">⚡ سرعة الضغط</h3><div class="game-stat" id="sc-score">⚽ 0 هدف</div><div style="font-size:18px;color:#FFB347" id="sc-timer">⏱️ 10 ثانية</div><button class="game-btn" style="font-size:50px;width:100px;height:100px;border-radius:50%;margin:20px auto;display:block" id="ball-btn" onclick="scoreGoal()">⚽</button><button class="game-btn" id="sc-start" onclick="startSpeedClick()">ابدأ!</button></div>`;
+    window.startSpeedClick=function(){score=0;time=10;document.getElementById('sc-start').disabled=true;timer=setInterval(()=>{time--;document.getElementById('sc-timer').textContent='⏱️ '+time+' ثانية';if(time<=0){clearInterval(timer);document.getElementById('sc-start').disabled=false;alert('🏆 سجّلت '+score+' هدف في 10 ثوان!');}},1000);};
+    window.scoreGoal=function(){if(timer&&time>0){score++;document.getElementById('sc-score').textContent='⚽ '+score+' هدف';}};
+  } else if(type==='hangman') {
+    const words=['كرة القدم','كرة السلة','الشطرنج','الجمباز','كرة اليد','التعليق','البطولة','الملعب','المدرب','الهداف'];
+    let word,guessed,wrong,maxWrong=6;
+    function startHangman(){word=words[Math.floor(Math.random()*words.length)];guessed=new Set([' ']);wrong=0;renderHangman();}
+    function renderHangman(){
+      const display=word.split('').map(c=>guessed.has(c)?c:'_').join(' ');
+      const won=word.split('').filter(c=>c!==' ').every(c=>guessed.has(c));
+      const lost=wrong>=maxWrong;
+      const arabic='ابتثجحخدذرزسشصضطظعغفقكلمنهويءأإؤئى';
+      content.innerHTML=`<div class="game-area"><h3 style="color:#FF6B1A;text-align:center;margin-bottom:12px">🔤 حروف اللاعب</h3><div class="hangman-display">${display}</div><div style="text-align:center;color:#ff6666;margin:8px 0">أخطاء: ${wrong}/${maxWrong}</div>${won?`<div style="text-align:center;font-size:18px;color:#00c864">🎉 أحسنت! الكلمة كانت: ${word}</div><button class="game-btn" onclick="startHangman()">جولة جديدة</button>`:''}${lost?`<div style="text-align:center;font-size:16px;color:#ff5555">❌ خسرت! الكلمة كانت: ${word}</div><button class="game-btn" onclick="startHangman()">حاول مجدداً</button>`:''}${!won&&!lost?`<div class="kb-row">${arabic.split('').slice(0,16).map(c=>`<button class="kb-key" onclick="guessLetter('${c}')" ${guessed.has(c)?'disabled':''}>${c}</button>`).join('')}</div><div class="kb-row">${arabic.split('').slice(16).map(c=>`<button class="kb-key" onclick="guessLetter('${c}')" ${guessed.has(c)?'disabled':''}>${c}</button>`).join('')}</div>`:''}`;
+    }
+    window.guessLetter=function(c){guessed.add(c);if(!word.includes(c))wrong++;renderHangman();};
+    window.startHangman=startHangman;startHangman();
+  } else if(type==='reflex') {
+    let score=0,total=10,current=0,waiting=false;
+    function nextReflex(){
+      if(current>=total){content.innerHTML=`<div class="game-area" style="text-align:center"><h3 style="color:#FF6B1A">النتيجة النهائية</h3><div class="game-stat">${score}/${total}</div><button class="game-btn" onclick="startReflex()">إعادة</button></div>`;return;}
+      waiting=false;document.getElementById('reflex-area').innerHTML=`<div style="font-size:18px;color:#aaa;text-align:center;margin:30px 0">انتظر الكرة... 👀</div>`;
+      setTimeout(()=>{waiting=true;document.getElementById('reflex-area').innerHTML=`<button class="game-btn" style="font-size:60px;width:110px;height:110px;border-radius:50%;display:block;margin:20px auto;animation:bounce 0.5s infinite" onclick="hitBall()">⚽</button>`;setTimeout(()=>{if(waiting){waiting=false;current++;document.getElementById('reflex-area').innerHTML=`<div style="text-align:center;color:#ff5555;font-size:18px">بطيء! 😅</div>`;setTimeout(nextReflex,1000);}},1500);},1000+Math.random()*2000);
+    }
+    window.hitBall=function(){if(!waiting)return;waiting=false;score++;current++;document.getElementById('reflex-area').innerHTML=`<div style="text-align:center;color:#00c864;font-size:18px">✅ ممتاز!</div>`;setTimeout(nextReflex,700);};
+    window.startReflex=function(){score=0;current=0;content.innerHTML=`<div class="game-area"><h3 style="color:#FF6B1A;text-align:center;margin-bottom:8px">🎯 اختبار الردة</h3><div class="game-stat" id="reflex-score">نقاط: 0/${total}</div><div id="reflex-area"></div></div>`;nextReflex();};
+    window.startReflex();
+  } else if(type==='penalty') {
+    let score=0,round=0,maxRounds=5;
+    function renderPenalty(){
+      if(round>=maxRounds){content.innerHTML=`<div class="game-area" style="text-align:center"><div style="font-size:40px">⚽</div><h3 style="color:#FF6B1A">انتهت الجولة!</h3><div class="game-stat">${score}/${maxRounds} أهداف</div><button class="game-btn" onclick="resetPenalty()">إعادة</button></div>`;return;}
+      content.innerHTML=`<div class="game-area" style="text-align:center"><h3 style="color:#FF6B1A;margin-bottom:8px">⚽ ركلة الجزاء</h3><div style="font-size:14px;color:#aaa;margin-bottom:12px">الجولة ${round+1}/${maxRounds} | الأهداف: ${score}</div><div style="font-size:16px;color:#fff;margin-bottom:16px">اختر الاتجاه!</div><div style="display:flex;justify-content:center;gap:12px"><button class="game-btn" style="font-size:24px;width:70px;height:70px;border-radius:12px" onclick="shootPenalty('right')">←</button><button class="game-btn" style="font-size:24px;width:70px;height:70px;border-radius:12px" onclick="shootPenalty('center')">↑</button><button class="game-btn" style="font-size:24px;width:70px;height:70px;border-radius:12px" onclick="shootPenalty('left')">→</button></div></div>`;
+    }
+    window.shootPenalty=function(dir){const dirs=['right','center','left'];const keeper=dirs[Math.floor(Math.random()*3)];const goal=dir!==keeper;round++;if(goal)score++;content.innerHTML=`<div class="game-area" style="text-align:center"><div style="font-size:60px;animation:bounce 0.5s">${goal?'🎉':'🧤'}</div><div style="font-size:20px;color:${goal?'#00c864':'#ff5555'};margin:12px 0">${goal?'هدف! 🔥':'الحارس أمسكها! 😅'}</div></div>`;setTimeout(renderPenalty,1000);};
+    window.resetPenalty=function(){score=0;round=0;renderPenalty();};renderPenalty();
+  } else if(type==='jumble') {
+    const sportWords=['كرة','ملعب','بطولة','مدرب','هداف','تسديد','تمريرة','دفاع','هجوم','حارس'];
+    let currentWord,jumbled;
+    function startJumble(){currentWord=sportWords[Math.floor(Math.random()*sportWords.length)];jumbled=currentWord.split('').sort(()=>Math.random()-0.5).join('');renderJumble();}
+    function renderJumble(){content.innerHTML=`<div class="game-area" style="text-align:center"><h3 style="color:#FF6B1A;margin-bottom:12px">🔀 ترتيب الكلمات</h3><div style="font-size:14px;color:#aaa;margin-bottom:8px">رتّب الحروف لتشكيل كلمة رياضية</div><div style="font-size:28px;font-weight:800;color:#FF6B1A;margin:16px 0;letter-spacing:4px">${jumbled}</div><input type="text" id="jumble-ans" style="width:200px;padding:10px;background:rgba(255,107,26,0.05);border:1.5px solid rgba(255,107,26,0.3);color:#fff;border-radius:10px;font-size:18px;text-align:center;font-family:inherit;direction:rtl" placeholder="اكتب الإجابة" /><br><button class="game-btn" style="margin-top:12px" onclick="checkJumble()">تحقق</button><button class="game-btn" onclick="startJumble()">كلمة أخرى</button><div id="jumble-result" style="margin-top:12px;font-size:16px"></div></div>`;}
+    window.checkJumble=function(){const ans=document.getElementById('jumble-ans').value.trim();const res=document.getElementById('jumble-result');if(ans===currentWord){res.innerHTML='<span style="color:#00c864">🎉 صحيح! أحسنت!</span>';}else{res.innerHTML=`<span style="color:#ff5555">❌ الإجابة الصحيحة: ${currentWord}</span>`;}setTimeout(startJumble,1500);};
+    window.startJumble=startJumble;startJumble();
+  } else if(type==='count') {
+    let pushups=0,situps=0,squats=0;
+    function renderCount(){content.innerHTML=`<div class="game-area"><h3 style="color:#FF6B1A;text-align:center;margin-bottom:16px">🔢 عداد التمارين اليومية</h3>${[['تمارين الضغط','pushups','💪',pushups],['تمارين البطن','situps','🔥',situps],['تمارين القرفصاء','squats','🦵',squats]].map(([n,k,ic,v])=>`<div style="background:rgba(255,107,26,0.05);border:1px solid rgba(255,107,26,0.2);border-radius:12px;padding:14px;margin-bottom:10px;display:flex;align-items:center;gap:12px"><span style="font-size:28px">${ic}</span><div style="flex:1"><div style="font-size:14px;color:#aaa">${n}</div><div style="font-size:28px;font-weight:800;color:#FF6B1A">${v}</div></div><button class="game-btn" style="font-size:20px;padding:8px 16px" onclick="increment('${k}')">+1</button><button class="game-btn" style="background:rgba(100,100,100,0.2);font-size:16px;padding:8px 12px" onclick="decrement('${k}')">-1</button></div>`).join('')}<button class="game-btn" style="width:100%;margin-top:8px" onclick="resetCount()">🔄 إعادة ضبط</button><div style="text-align:center;margin-top:12px;color:#FFB347;font-size:14px">إجمالي التمارين: ${pushups+situps+squats}</div></div>`;}
+    window.increment=function(k){if(k==='pushups')pushups++;else if(k==='situps')situps++;else squats++;renderCount();};
+    window.decrement=function(k){if(k==='pushups'&&pushups>0)pushups--;else if(k==='situps'&&situps>0)situps--;else if(squats>0)squats--;renderCount();};
+    window.resetCount=function(){pushups=situps=squats=0;renderCount();};renderCount();
+  } else if(type==='trivia') {
+    const tqs=[{q:"من فاز بكأس العالم 2022؟",opts:["البرازيل","فرنسا","الأرجنتين","إسبانيا"],a:2},{q:"ما عاصمة كرة القدم العربية؟",opts:["القاهرة","الرياض","دبي","بيروت"],a:0},{q:"من هو صاحب أسرع هدف في تاريخ كأس العالم؟",opts:["رونالدو","ميسي","هاكان شوكور","غيرد مولر"],a:2},{q:"ما الفريق الأكثر فوزاً بدوري أبطال أوروبا؟",opts:["برشلونة","بايرن ميونيخ","ريال مدريد","يوفنتوس"],a:2},{q:"كم مرة فاز المنتخب الفرنسي بكأس العالم؟",opts:["1","2","3","4"],a:1}];
+    let tIdx=0,tScore=0;
+    function renderTrivia(){if(tIdx>=tqs.length){content.innerHTML=`<div class="game-area" style="text-align:center"><div class="game-stat">${tScore}/${tqs.length} نقاط</div><button class="game-btn" onclick="restartTrivia()">إعادة</button></div>`;return;}const q=tqs[tIdx];content.innerHTML=`<div class="game-area"><h3 style="color:#FF6B1A;text-align:center;margin-bottom:12px">🏅 من سيربح؟ سؤال ${tIdx+1}/${tqs.length}</h3><div style="font-size:15px;font-weight:600;margin-bottom:14px;line-height:1.6">${q.q}</div>${q.opts.map((o,i)=>`<button class="quiz-opt" onclick="answerTrivia(${i},${q.a})">${o}</button>`).join('')}</div>`;}
+    window.answerTrivia=function(i,a){document.querySelectorAll('.quiz-opt').forEach((b,j)=>{if(j===a)b.classList.add('correct');else if(j===i)b.classList.add('wrong');b.disabled=true;});if(i===a)tScore++;setTimeout(()=>{tIdx++;renderTrivia();},1000);};
+    window.restartTrivia=function(){tIdx=0;tScore=0;renderTrivia();};renderTrivia();
+  } else if(type==='color') {
+    const colorQ=[{q:"ما لون قميص برشلونة الأساسي؟",opts:["أحمر","أزرق وأحمر","أخضر","أصفر"],a:1},{q:"ما لون قميص ريال مدريد الأساسي؟",opts:["أبيض","أحمر","أزرق","أسود"],a:0},{q:"ما لون قميص منتخب البرازيل؟",opts:["أخضر","أصفر","أزرق","أحمر"],a:1},{q:"ما لون قميص منتخب عُمان؟",opts:["أبيض وأحمر","أزرق","أخضر","أصفر"],a:0},{q:"ما لون بطاقة الطرد في كرة القدم؟",opts:["أصفر","أحمر","أزرق","أبيض"],a:1}];
+    let cIdx=0,cScore=0;
+    function renderColor(){if(cIdx>=colorQ.length){content.innerHTML=`<div class="game-area" style="text-align:center"><h3 style="color:#FF6B1A">أحسنت!</h3><div class="game-stat">${cScore}/${colorQ.length}</div><button class="game-btn" onclick="restartColor()">مجدداً</button></div>`;return;}const q=colorQ[cIdx];content.innerHTML=`<div class="game-area"><h3 style="color:#FF6B1A;text-align:center;margin-bottom:12px">🎨 لون الرياضة - ${cIdx+1}/${colorQ.length}</h3><div style="font-size:15px;font-weight:600;margin-bottom:14px">${q.q}</div>${q.opts.map((o,i)=>`<button class="quiz-opt" onclick="answerColor(${i},${q.a})">${o}</button>`).join('')}</div>`;}
+    window.answerColor=function(i,a){document.querySelectorAll('.quiz-opt').forEach((b,j)=>{if(j===a)b.classList.add('correct');else if(j===i)b.classList.add('wrong');b.disabled=true;});if(i===a)cScore++;setTimeout(()=>{cIdx++;renderColor();},1000);};
+    window.restartColor=function(){cIdx=0;cScore=0;renderColor();};renderColor();
+  } else if(type==='typing') {
+    const names=["رونالدو","ميسي","مبابي","نيمار","بنزيمة","محمد صلاح","سون","لوكاكو","كاني","كيليان"];
+    let tIdx2=0,tScore2=0,startTime,target;
+    function renderTyping(){if(tIdx2>=5){content.innerHTML=`<div class="game-area" style="text-align:center"><h3 style="color:#FF6B1A">انتهى التحدي!</h3><div class="game-stat">${tScore2}/5</div><button class="game-btn" onclick="restartTyping()">مجدداً</button></div>`;return;}target=names[Math.floor(Math.random()*names.length)];startTime=Date.now();content.innerHTML=`<div class="game-area" style="text-align:center"><h3 style="color:#FF6B1A;margin-bottom:8px">⌨️ اكتب اسم اللاعب - ${tIdx2+1}/5</h3><div style="font-size:28px;font-weight:800;color:#FFB347;margin:16px 0;direction:rtl">${target}</div><input type="text" id="typing-ans" style="width:200px;padding:10px;background:rgba(255,107,26,0.05);border:1.5px solid rgba(255,107,26,0.3);color:#fff;border-radius:10px;font-size:18px;text-align:center;font-family:inherit;direction:rtl" placeholder="اكتب هنا..." autofocus oninput="checkTyping()" /><div style="font-size:12px;color:#888;margin-top:8px">اكتب الاسم بالضبط</div></div>`;}
+    window.checkTyping=function(){const v=document.getElementById('typing-ans').value.trim();if(v===target){const t=((Date.now()-startTime)/1000).toFixed(1);tScore2++;tIdx2++;content.innerHTML=`<div class="game-area" style="text-align:center"><div style="font-size:40px">✅</div><div style="color:#00c864;font-size:18px">صحيح في ${t} ثانية!</div></div>`;setTimeout(renderTyping,1000);}};
+    window.restartTyping=function(){tIdx2=0;tScore2=0;renderTyping();};renderTyping();
+  }
+}
+
+function backToGames() {
+  document.getElementById('games-menu').style.display='block';
+  document.getElementById('game-container').style.display='none';
+}
+
+renderLB();
+savePts();
+</script>
+</body>
+</html>
